@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebraga- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:51:40 by tebraga-          #+#    #+#             */
-/*   Updated: 2025/10/01 21:10:05 by tebraga-         ###   ########.fr       */
+/*   Created: 2025/09/23 16:07:39 by tebraga-          #+#    #+#             */
+/*   Updated: 2025/09/24 18:31:06 by tebraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char z)
+int	ft_strcmp(char *s1, char *s2)
 {
-	write(1, &z, 1);
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }
-
-void	ft_putnbr(int nb)
+/*#include <stdio.h>
+int	main(void)
 {
-	long int	n;
+	char	a[] = "hello";
+	char	b[] = "hez";
 
-	n = nb;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 0 && n <= 9)
-	{
-		ft_putchar(n + '0');
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-}
-/*int	main(void)
-{
-	ft_putnbr(-2147483648);
+	printf("sting 1: %s\n", a);
+	printf("string 2: %s\n", b);
+	printf(" diferenca: %d\n", ft_strcmp(a, b));
 	return (0);
 }*/

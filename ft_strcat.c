@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebraga- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:51:40 by tebraga-          #+#    #+#             */
-/*   Updated: 2025/10/01 21:10:05 by tebraga-         ###   ########.fr       */
+/*   Created: 2025/09/23 18:00:02 by tebraga-          #+#    #+#             */
+/*   Updated: 2025/09/24 17:59:16 by tebraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char z)
+char	*ft_strcat(char *dest, char *src)
 {
-	write(1, &z, 1);
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
+/*#include <stdio.h>
 
-void	ft_putnbr(int nb)
+int	main(void)
 {
-	long int	n;
+	char	a[50] = "hello";
+	char	b[] = " world!";
 
-	n = nb;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 0 && n <= 9)
-	{
-		ft_putchar(n + '0');
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-}
-/*int	main(void)
-{
-	ft_putnbr(-2147483648);
-	return (0);
+	printf("string 1: %s\n", a);
+	printf("string 2: %s\n", b);
+	printf("combinacao %s\n", ft_strcat(a, b));
+	return(0);
 }*/

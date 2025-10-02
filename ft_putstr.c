@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebraga- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:51:40 by tebraga-          #+#    #+#             */
-/*   Updated: 2025/10/01 21:10:05 by tebraga-         ###   ########.fr       */
+/*   Created: 2025/09/29 12:15:52 by tebraga-          #+#    #+#             */
+/*   Updated: 2025/10/01 15:05:53 by tebraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char z)
+void	ft_putstr(char *str)
 {
-	write(1, &z, 1);
-}
+	int	i;
 
-void	ft_putnbr(int nb)
-{
-	long int	n;
-
-	n = nb;
-	if (n < 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 0 && n <= 9)
-	{
-		ft_putchar(n + '0');
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		write (1, &str[i], 1);
+		i++;
 	}
 }
 /*int	main(void)
-{
-	ft_putnbr(-2147483648);
+{	
+	char	s[] = "facamos acontecer";
+	ft_putstr(s);
 	return (0);
 }*/

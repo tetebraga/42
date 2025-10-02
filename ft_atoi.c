@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebraga- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:51:40 by tebraga-          #+#    #+#             */
-/*   Updated: 2025/10/01 21:10:05 by tebraga-         ###   ########.fr       */
+/*   Created: 2025/09/30 17:51:48 by tebraga-          #+#    #+#             */
+/*   Updated: 2025/10/01 21:11:10 by tebraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+//#include <stdio.h>
 
-void	ft_putchar(char z)
+int	ft_atoi(char *str)
 {
-	write(1, &z, 1);
-}
+	int	i;
+	int	sign;
+	int	res;
 
-void	ft_putnbr(int nb)
-{
-	long int	n;
-
-	n = nb;
-	if (n < 0)
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
 	{
-		ft_putchar('-');
-		n = -n;
+		i++;
 	}
-	if (n >= 0 && n <= 9)
+	while ((str[i] == '-') || (str[i] == '+'))
 	{
-		ft_putchar(n + '0');
+		if (str[i] == '-')
+		{
+			sign = sign * -1;
+		}
+		i++;
 	}
-	if (n > 9)
+	while (str[i] >= '0' && str[i] <= '9') 
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		res = res * 10 + (str[i] - '0');
+		i++;
 	}
+	return (res * sign);
 }
 /*int	main(void)
 {
-	ft_putnbr(-2147483648);
-	return (0);
+	char	str[] = " ---+--+1234ab567";
+	printf("%d", ft_atoi(str));
+	return(0);
 }*/
